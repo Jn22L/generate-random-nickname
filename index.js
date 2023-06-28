@@ -1,5 +1,4 @@
 import words from "./words.js";
-
 let MAX_LENGTH = 6;
 
 function getRandomInt(min, max) {
@@ -8,7 +7,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min; //최댓값은 제외, 최솟값은 포함
 }
 
-function getRandomId(maxLenth) {
+function generateRandomNickname(maxLenth) {
   const result = document.querySelector("#result");
   let wordStr = "";
   let letterStr = "";
@@ -22,18 +21,22 @@ function getRandomId(maxLenth) {
     let randomLetter = wordStr.charAt(getRandomInt(0, wordStr.length));
     letterStr = letterStr + randomLetter;
   }
-  console.log(wordStr, letterStr);
+
   result.innerHTML = letterStr;
 }
 
-const btnChoice = document.querySelector("#btn-choice");
-btnChoice.addEventListener("click", function () {
-  getRandomId(MAX_LENGTH);
-});
+function init() {
+  const numberSelect = document.querySelector("#number-select");
+  const btnChoice = document.querySelector("#btn-choice");
 
-const numberSelect = document.querySelector("#number-select");
-numberSelect.addEventListener("change", function (ev) {
-  var option = numberSelect.options[numberSelect.selectedIndex];
-  console.log(option.value);
-  MAX_LENGTH = option.value;
-});
+  numberSelect.addEventListener("change", function () {
+    var option = numberSelect.options[numberSelect.selectedIndex];
+    MAX_LENGTH = option.value;
+  });
+
+  btnChoice.addEventListener("click", function () {
+    generateRandomNickname(MAX_LENGTH);
+  });
+}
+
+init();
