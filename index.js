@@ -39,7 +39,7 @@ function generateRandomNickname(nickLenth, genType) {
 function init() {
   const nickLengthSelect = document.querySelector("#nicklength-select");
   const genTypeSelect = document.querySelector("#gentype-select");
-  const btnChoice = document.querySelector("#btn-choice");
+  const btnGenerate = document.querySelector("#btn-generate");
 
   let nickLength = 6; // 닉네임 길이
   let genType = "A"; // 생성방식
@@ -54,7 +54,7 @@ function init() {
     genType = option.value;
   });
 
-  btnChoice.addEventListener("click", function () {
+  btnGenerate.addEventListener("click", function () {
     generateRandomNickname(nickLength, genType);
   });
 }
