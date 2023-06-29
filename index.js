@@ -10,7 +10,6 @@ function getRandomInt(min, max) {
 }
 
 function generateRandomNickname(nickLenth, genType) {
-  //console.log("param:nickLenth,genType:", nickLenth, genType);
   const result = document.querySelector("#result");
   let wordStr = "";
   let letterStr = "";
@@ -28,7 +27,7 @@ function generateRandomNickname(nickLenth, genType) {
       }
       break;
     case "2": // 부분단어
-      let indexStart = getRandomInt(0, NICK_LENGTH);
+      let indexStart = getRandomInt(0, SAMPLE_WORD_NUM / 2);
       let indexEnd = indexStart + Number(nickLenth);
       letterStr = wordStr.substring(indexStart, indexEnd);
       break;
