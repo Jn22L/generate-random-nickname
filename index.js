@@ -1,7 +1,5 @@
 import words from "./words.js";
-let SAMPLE_WORD_NUM = 20; // 샘플단어 갯수
-let NICK_LENGTH = 6; // 닉네임 길이
-let GEN_TYPE = "1"; // 생성방식
+const SAMPLE_WORD_NUM = 20; // 샘플단어 갯수
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -43,18 +41,21 @@ function init() {
   const gentypeSelect = document.querySelector("#gentype-select");
   const btnChoice = document.querySelector("#btn-choice");
 
+  let nickLength = 6; // 닉네임 길이
+  let genType = "1"; // 생성방식
+
   numberSelect.addEventListener("change", function () {
     var option = numberSelect.options[numberSelect.selectedIndex];
-    NICK_LENGTH = option.value;
+    nickLength = option.value;
   });
 
   gentypeSelect.addEventListener("change", function () {
     var option = gentypeSelect.options[gentypeSelect.selectedIndex];
-    GEN_TYPE = option.value;
+    genType = option.value;
   });
 
   btnChoice.addEventListener("click", function () {
-    generateRandomNickname(NICK_LENGTH, GEN_TYPE);
+    generateRandomNickname(nickLength, genType);
   });
 }
 
