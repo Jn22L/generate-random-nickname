@@ -8,9 +8,8 @@
     <title>Document</title>
   </head>
   <body>
-    <label for="number-select">글자수 선택:</label>
+    <label for="number-select">글자수:</label>
     <select name="numbers" id="number-select">
-      <option value="">--글자수를선택하세요--</option>
       <option value="2">2</option>
       <option value="3">3</option>
       <option value="4">4</option>
@@ -20,6 +19,11 @@
       <option value="8">8</option>
       <option value="9">9</option>
       <option value="10">10</option>
+    </select>
+    <label for="gentype-select">생성방식:</label>
+    <select name="gentypes" id="gentype-select">
+      <option value="1" selected="selected">완전랜덤</option>
+      <option value="2">부분단어</option>
     </select>
     <button id="btn-choice">닉네임생성</button>
     <h4 id="result"></h4>
