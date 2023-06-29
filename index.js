@@ -18,13 +18,13 @@ function generateRandomNickname(nickLenth, genType) {
   }
 
   switch (genType) {
-    case "1": // 완전랜덤
+    case "A": // 완전랜덤
       for (let i = 0; i < nickLenth; i++) {
         let randomLetter = wordStr.charAt(getRandomInt(0, wordStr.length));
         letterStr = letterStr + randomLetter;
       }
       break;
-    case "2": // 부분단어
+    case "B": // 부분단어
       let indexStart = getRandomInt(0, SAMPLE_WORD_NUM / 2);
       let indexEnd = indexStart + Number(nickLenth);
       letterStr = wordStr.substring(indexStart, indexEnd);
@@ -42,7 +42,7 @@ function init() {
   const btnChoice = document.querySelector("#btn-choice");
 
   let nickLength = 6; // 닉네임 길이
-  let genType = "1"; // 생성방식
+  let genType = "A"; // 생성방식
 
   numberSelect.addEventListener("change", function () {
     var option = numberSelect.options[numberSelect.selectedIndex];
