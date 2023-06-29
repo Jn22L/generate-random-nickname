@@ -37,20 +37,20 @@ function generateRandomNickname(nickLenth, genType) {
 }
 
 function init() {
-  const numberSelect = document.querySelector("#number-select");
-  const gentypeSelect = document.querySelector("#gentype-select");
+  const nickLengthSelect = document.querySelector("#nicklength-select");
+  const genTypeSelect = document.querySelector("#gentype-select");
   const btnChoice = document.querySelector("#btn-choice");
 
   let nickLength = 6; // 닉네임 길이
   let genType = "A"; // 생성방식
 
-  numberSelect.addEventListener("change", function () {
-    var option = numberSelect.options[numberSelect.selectedIndex];
+  nickLengthSelect.addEventListener("change", function () {
+    var option = nickLengthSelect.options[nickLengthSelect.selectedIndex];
     nickLength = option.value;
   });
 
-  gentypeSelect.addEventListener("change", function () {
-    var option = gentypeSelect.options[gentypeSelect.selectedIndex];
+  genTypeSelect.addEventListener("change", function () {
+    var option = genTypeSelect.options[genTypeSelect.selectedIndex];
     genType = option.value;
   });
 
