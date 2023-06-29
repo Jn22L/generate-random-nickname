@@ -40,6 +40,7 @@ function init() {
   const nickLengthSelect = document.querySelector("#nicklength-select");
   const genTypeSelect = document.querySelector("#gentype-select");
   const btnGenerate = document.querySelector("#btn-generate");
+  const btnFeedback = document.querySelector("#btn-feedback");
 
   let nickLength = 6; // 닉네임 길이
   let genType = "A"; // 생성방식
@@ -56,6 +57,17 @@ function init() {
 
   btnGenerate.addEventListener("click", function () {
     generateRandomNickname(nickLength, genType);
+  });
+
+  btnFeedback.addEventListener("click", function () {
+    console.log("feedback");
+    var popupWidth = 500;
+    var popupHeight = 250;
+    var popupX = window.screen.width / 2 - popupWidth / 2;
+    var popupY = window.screen.height / 2 - popupHeight / 2;
+
+    //window.open("feedback.html", "feedback", "width=500, height=250, left=100, top=50");
+    window.open("feedback.html", "", "status=no, height=" + popupHeight + ", width=" + popupWidth + ", left=" + popupX + ", top=" + popupY);
   });
 }
 

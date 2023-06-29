@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate" />
+    <style>
+      button {
+        color: white;
+        border: 0;
+        background: #5db0ff;
+        padding: 6px;
+        min-width: 80px;
+        border-radius: 4px;
+      }
+
+      textarea {
+        font-family: inherit;
+        font-size: inherit;
+        width: 100%;
+        display: block;
+        resize: none;
+        box-sizing: border-box;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      textarea:focus {
+        border-color: #5db0ff;
+        outline: 0;
+        box-shadow: 0 0 0 0.125rem rgba(52, 142, 227, 0.3);
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Please leave feedback about the website. thank you!</h1>
+    <textarea id="ta-feedback" rows="3" cols="33" placeholder="Feedback Message"></textarea>
+    <button id="btn-send">Send</button>
+    <script>
+      const HOST_NAME = "http://127.0.0.1:8080";
+      /**
+       * todo 목록을 저장한다.
+       * @param {object[]} objArr - 저장할 todo object 배열: [{},{},{}...]
+       */
+      const saveData = async (objArr) => {
+        const createdRows = objArr.filter((v) => v.IUD_FLAG === "I");
+        const updatedRows = objArr.filter((v) => v.IUD_FLAG === "U");
+        const deletedRows = objArr.filter((v) => v.IUD_FLAG === "D");
+        const saveJSON = { modifiedRows: { createdRows, updatedRows, deletedRows } };
+
+        // save JSON 양식
+        //
+        // modifiedRows: {
+        //       createdRows: [ {...},{...} ...  ],
+        //       updatedRows: [ {...},{...} ...  ],
+        //       deletedRows: [ {...},{...} ...  ]
+        // }
+        console.log("url:", `${HOST_NAME}/save`, saveJSON);
+        const res = await fetch(`${HOST_NAME}/save`, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(saveJSON),
+        });
+
+        const resJSON = await res.json();
+        //fetchData("TODO").then((json) => renderData("TODO", json));
+      };
+
+      function init() {
+        const taFeedback = document.querySelector("#ta-feedback");
+        const btnSend = document.querySelector("#btn-send");
+        taFeedback.focus();
+        btnSend.addEventListener("click", function () {
+          console.log("feedback:", taFeedback.value);
+          // feedback 저장
+          //alert("Thank you for your feedback!");
+          //self.close();
+          saveData([{ IUD_FLAG: "I", FEEDBACK: taFeedback.value }]);
+        });
+      }
+
+      init();
+    </script>
+  </body>
+</html>
